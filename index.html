@@ -279,6 +279,78 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Streaming Section */
+        .streaming-section {
+            background: linear-gradient(to bottom, var(--warm-white), var(--sand));
+        }
+
+        .streaming-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #e50914;
+        }
+
+        .streaming-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .streaming-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .streaming-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .streaming-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .streaming-steps li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--ocean-mid);
+            font-weight: bold;
+        }
+
+        .streaming-logos {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .streaming-logo {
+            background: var(--warm-white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .reminder-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .reminder-box strong {
+            color: #856404;
+        }
+
         /* Appliance Section */
         .appliance-section {
             background: var(--sand);
@@ -480,6 +552,19 @@
             animation: wave 2s infinite;
             font-size: 3rem;
             margin-bottom: 1rem;
+        }
+
+        .cat-warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .cat-warning strong {
+            color: #721c24;
         }
 
         /* Contact Section */
@@ -780,7 +865,8 @@
             .contact-card,
             .restaurant-card,
             .activity-card,
-            .appliance-card {
+            .appliance-card,
+            .streaming-card {
                 box-shadow: none;
                 border: 1px solid #ddd;
                 break-inside: avoid;
@@ -808,7 +894,8 @@
             .footer,
             .dining-section,
             .activities-section,
-            .appliance-section {
+            .appliance-section,
+            .streaming-section {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -871,6 +958,7 @@
         <div class="nav-dot" onclick="scrollToSection(7)"></div>
         <div class="nav-dot" onclick="scrollToSection(8)"></div>
         <div class="nav-dot" onclick="scrollToSection(9)"></div>
+        <div class="nav-dot" onclick="scrollToSection(10)"></div>
     </div>
 
     <!-- Hero Section -->
@@ -970,8 +1058,39 @@
         </div>
     </section>
 
+    <!-- Streaming TV Section -->
+    <section class="streaming-section" id="section-3">
+        <div class="section-content">
+            <h2>Smart TV & Streaming</h2>
+            
+            <div class="streaming-card">
+                <h3><span class="icon">📺</span> Entertainment</h3>
+                
+                <p>Enjoy access to popular streaming apps on the Smart TV:</p>
+                
+                <div class="streaming-logos">
+                    <span class="streaming-logo">Netflix</span>
+                    <span class="streaming-logo">Amazon Prime Video</span>
+                    <span class="streaming-logo">YouTube</span>
+                </div>
+
+                <h3>To Get Started:</h3>
+                <ul class="streaming-steps">
+                    <li>Open your preferred app on the Smart TV</li>
+                    <li>Log in using your personal account details</li>
+                    <li>Sit back and enjoy your favourite shows and movies</li>
+                </ul>
+
+                <div class="reminder-box">
+                    <strong>⚠️ Before You Check Out:</strong><br>
+                    Please remember to log out of all streaming apps for your privacy and security.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Appliance Instructions Section -->
-    <section class="appliance-section" id="section-3">
+    <section class="appliance-section" id="section-4">
         <div class="section-content">
             <h2>Kitchen Appliances</h2>
             
@@ -1040,7 +1159,7 @@
     </section>
 
     <!-- Local Dining Section -->
-    <section class="dining-section" id="section-4">
+    <section class="dining-section" id="section-5">
         <div class="section-content">
             <h2>Where to Eat</h2>
             
@@ -1096,7 +1215,7 @@
     </section>
 
     <!-- Activities & Walking Section -->
-    <section class="activities-section" id="section-5">
+    <section class="activities-section" id="section-6">
         <div class="section-content">
             <h2>Explore Whangaroa</h2>
             
@@ -1170,7 +1289,7 @@
     </section>
 
     <!-- Cat Section -->
-    <section class="cat-section" id="section-6">
+    <section class="cat-section" id="section-7">
         <div class="section-content">
             <h2>A Little Local Friend</h2>
             <div class="cat-container">
@@ -1179,6 +1298,11 @@
                     You may notice our friendly cat around the property.
                 </p>
                 
+                <div class="cat-warning">
+                    <strong>🚫 Important — Please Note:</strong><br>
+                    Our cat is <strong>not allowed inside the house</strong>. He damages the furniture when indoors. Please do not let him in, no matter how persuasive he may be! Thank you for helping us keep Te Whare Mā beautiful for all our guests.
+                </div>
+
                 <div class="info-grid" style="margin-top: 2rem;">
                     <div class="info-card" style="border-left-color: var(--ocean-mid);">
                         <h3><span class="icon">🥣</span> Feeding</h3>
@@ -1194,7 +1318,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="section-7">
+    <section class="contact" id="section-8">
         <div class="section-content">
             <h2>Need Assistance?</h2>
             <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
@@ -1213,7 +1337,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="experience" id="section-8">
+    <section class="experience" id="section-9">
         <div class="section-content">
             <h2>The Te Whare Mā Experience</h2>
             <p style="font-size: 1.2rem; color: var(--ocean-mid); margin-bottom: 2rem;">
@@ -1252,7 +1376,7 @@
     </section>
 
     <!-- Checklist Section -->
-    <section class="checklist" id="section-9">
+    <section class="checklist" id="section-10">
         <div class="section-content">
             <h2>Before You Leave</h2>
             <p style="text-align: center; color: var(--ocean-mid); margin-bottom: 2rem;">
@@ -1312,7 +1436,7 @@
     </section>
 
     <!-- Footer -->
-    <section class="footer" id="section-10">
+    <section class="footer" id="section-11">
         <h3>Thank You</h3>
         <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
             Thank you for choosing Te Whare Mā. We truly hope your stay is relaxing, refreshing, and unforgettable.
