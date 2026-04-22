@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Whare Mā - Guest Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --ocean-deep: #1a3a3a;
+            --ocean-mid: #2d5a5a;
+            --sand: #f5f1e8;
+            --warm-white: #faf8f5;
+            --sunset: #c9a66b;
+            --text-dark: #2c3e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-mid) 50%, #4a7c7c 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--sand);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(245, 241, 232, 0.9);
+            font-style: italic;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hero .location {
+            font-size: 0.9rem;
+            color: rgba(245, 241, 232, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 3rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--sand);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(45, 90, 90, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-dot.active {
+            background: var(--ocean-mid);
+            transform: scale(1.3);
+            border-color: var(--sunset);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--ocean-deep);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--sunset);
+        }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--ocean-deep);
+            margin: 2rem 0 1rem 0;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background: var(--sand);
+        }
+
+        .welcome-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            text-align: center;
+            color: var(--ocean-deep);
+            margin-bottom: 3rem;
+        }
+
+        .kia-ora {
+            font-size: 2rem;
+            color: var(--ocean-mid);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--sunset);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        /* Guidelines Section */
+        .guidelines {
+            background: white;
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--warm-white);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .guideline-item:hover {
+            background: var(--sand);
+            transform: translateX(10px);
+        }
+
+        .guideline-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ocean-deep);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .guideline-content h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--ocean-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Streaming Section */
+        .streaming-section {
+            background: linear-gradient(to bottom, var(--warm-white), var(--sand));
+        }
+
+        .streaming-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #e50914;
+        }
+
+        .streaming-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .streaming-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .streaming-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .streaming-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .streaming-steps li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--ocean-mid);
+            font-weight: bold;
+        }
+
+        .streaming-logos {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .streaming-logo {
+            background: var(--warm-white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .reminder-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .reminder-box strong {
+            color: #856404;
+        }
+
+        /* Appliance Section */
+        .appliance-section {
+            background: var(--sand);
+        }
+
+        .appliance-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .appliance-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-list li:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: var(--ocean-mid);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box strong {
+            color: #856404;
+        }
+
+        /* Dining Section */
+        .dining-section {
+            background: white;
+        }
+
+        .restaurant-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--sunset);
+            transition: all 0.3s ease;
+        }
+
+        .restaurant-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .restaurant-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--ocean-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ocean-mid);
+        }
+
+        .tag {
+            background: var(--sand);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Activities Section */
+        .activities-section {
+            background: linear-gradient(to bottom, var(--warm-white), var(--sand));
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--ocean-mid);
+        }
+
+        .activity-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--ocean-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ocean-mid);
+        }
+
+        .difficulty {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .difficulty.easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty.hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Cat Section */
+        .cat-section {
+            background: linear-gradient(to bottom, var(--warm-white), var(--sand));
+            text-align: center;
+        }
+
+        .cat-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cat-container::before {
+            content: '🐱';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+
+        .cat-paw {
+            display: inline-block;
+            animation: wave 2s infinite;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cat-warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .cat-warning strong {
+            color: #721c24;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--ocean-deep);
+            color: var(--sand);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--sand);
+        }
+
+        .contact h2::after {
+            background: var(--sunset);
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 241, 232, 0.1);
+            margin-top: 2rem;
+        }
+
+        .contact-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-phone {
+            font-size: 1.5rem;
+            color: var(--sunset);
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-phone:hover {
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--sand);
+            text-align: center;
+        }
+
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .luxury-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .luxury-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .luxury-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Checklist Section */
+        .checklist {
+            background: white;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .checklist-category {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--ocean-mid);
+        }
+
+        .checklist-category h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--ocean-mid);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checkbox:hover {
+            background: var(--ocean-mid);
+            color: white;
+        }
+
+        .checkbox.checked {
+            background: var(--ocean-mid);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ocean-deep);
+            color: var(--sand);
+            text-align: center;
+            padding: 4rem 2rem;
+            min-height: auto;
+        }
+
+        .footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .maori-text {
+            font-size: 1.2rem;
+            color: var(--sunset);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Print Section - QR Code */
+        .print-section {
+            display: none;
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 4px solid var(--ocean-deep);
+        }
+
+        .qr-container {
+            display: inline-block;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        #qrcode {
+            margin: 0 auto;
+        }
+
+        .qr-instructions {
+            margin-top: 1.5rem;
+            color: var(--ocean-mid);
+            font-size: 0.9rem;
+        }
+
+        .print-url {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--ocean-deep);
+            margin-top: 1rem;
+            word-break: break-all;
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--ocean-deep);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-button:hover {
+            background: var(--ocean-mid);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .nav-dots, 
+            .scroll-indicator,
+            .print-button,
+            .checkbox {
+                display: none !important;
+            }
+
+            section {
+                min-height: auto;
+                page-break-inside: avoid;
+                padding: 2rem;
+                display: block;
+            }
+
+            .hero {
+                height: auto;
+                padding: 3rem 2rem;
+                page-break-after: always;
+            }
+
+            .hero-content {
+                animation: none;
+            }
+
+            .info-card,
+            .guideline-item,
+            .luxury-item,
+            .checklist-category,
+            .cat-container,
+            .contact-card,
+            .restaurant-card,
+            .activity-card,
+            .appliance-card,
+            .streaming-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .print-section {
+                display: block;
+                page-break-before: always;
+                padding: 4rem 2rem;
+            }
+
+            .qr-container {
+                box-shadow: none;
+                border: 2px solid var(--ocean-deep);
+            }
+
+            /* Ensure background colors print */
+            .hero,
+            .welcome,
+            .guidelines,
+            .cat-section,
+            .contact,
+            .experience,
+            .checklist,
+            .footer,
+            .dining-section,
+            .activities-section,
+            .appliance-section,
+            .streaming-section {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .contact {
+                background: var(--ocean-deep) !important;
+                color: white !important;
+            }
+
+            .footer {
+                background: var(--ocean-deep) !important;
+                color: white !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .luxury-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-dots {
+                display: none;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .print-button {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Button -->
+    <button class="print-button" onclick="printGuide()">
+        <span>🖨️</span> Print / Save PDF
+    </button>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2)"></div>
+        <div class="nav-dot" onclick="scrollToSection(3)"></div>
+        <div class="nav-dot" onclick="scrollToSection(4)"></div>
+        <div class="nav-dot" onclick="scrollToSection(5)"></div>
+        <div class="nav-dot" onclick="scrollToSection(6)"></div>
+        <div class="nav-dot" onclick="scrollToSection(7)"></div>
+        <div class="nav-dot" onclick="scrollToSection(8)"></div>
+        <div class="nav-dot" onclick="scrollToSection(9)"></div>
+        <div class="nav-dot" onclick="scrollToSection(10)"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="section-0">
+        <div class="hero-content">
+            <div class="location">Whangaroa Harbour, New Zealand</div>
+            <h1>Te Whare Mā</h1>
+            <div class="subtitle">Your Sanctuary by the Sea</div>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToSection(1)">Explore</div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome" id="section-1">
+        <div class="section-content">
+            <h2>Welcome</h2>
+            <div class="welcome-text">
+                <span class="kia-ora">Kia ora</span>
+                We're so pleased to share our special place with you. Te Whare Mā is designed to be a space where you can slow down, breathe, and take in the beauty of Whangaroa Harbour.
+                <br><br>
+                Whether you're here for rest, adventure, or connection — we hope your stay feels effortless and memorable.
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span class="icon">🕐</span> Check-in</h3>
+                    <p><strong>2:00 PM</strong><br>Key access via lockbox in the little shed on the first level</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="icon">🕙</span> Check-out</h3>
+                    <p><strong>10:00 AM</strong><br>Please leave the home tidy as you found it</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="icon">📶</span> WiFi</h3>
+                    <p>Connected and ready for use<br>Network details available on arrival</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="icon">🍯</span> Pantry</h3>
+                    <p>Feel free to help yourself to pantry basics during your stay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines Section -->
+    <section class="guidelines" id="section-2">
+        <div class="section-content">
+            <h2>House Guidelines</h2>
+            
+            <div class="guideline-item">
+                <div class="guideline-icon">🥂</div>
+                <div class="guideline-content">
+                    <h4>Relax & Enjoy</h4>
+                    <p>Enjoy yourselves — relax and have drinks, but no parties please. Respect the peace of this special place and neighboring properties.</p>
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-icon">💧</div>
+                <div class="guideline-content">
+                    <h4>Water & Power</h4>
+                    <p>Please be mindful of usage. This is an off-grid sensitive environment where resources are precious.</p>
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-icon">💨</div>
+                <div class="guideline-content">
+                    <h4>Wind Care</h4>
+                    <p>Use door latches or the heavy rock provided to secure doors. The harbour winds can be sudden and strong.</p>
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-icon">🪟</div>
+                <div class="guideline-content">
+                    <h4>Windows at Night</h4>
+                    <p>Please close to keep out insects. The native bush surrounding the property is home to many curious creatures.</p>
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-icon">🔊</div>
+                <div class="guideline-content">
+                    <h4>BOSE Speaker</h4>
+                    <p>A Bluetooth speaker is available for your enjoyment. Please keep volume at a respectful level, especially in the evenings.</p>
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-icon">♻️</div>
+                <div class="guideline-content">
+                    <h4>Recycling & Rubbish</h4>
+                    <p>Recycling centre is located down by the Gamefish Club. Please dispose of rubbish thoughtfully before departure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Streaming TV Section -->
+    <section class="streaming-section" id="section-3">
+        <div class="section-content">
+            <h2>Smart TV & Streaming</h2>
+            
+            <div class="streaming-card">
+                <h3><span class="icon">📺</span> Entertainment</h3>
+                
+                <p>Enjoy access to popular streaming apps on the Smart TV:</p>
+                
+                <div class="streaming-logos">
+                    <span class="streaming-logo">Netflix</span>
+                    <span class="streaming-logo">Amazon Prime Video</span>
+                    <span class="streaming-logo">YouTube</span>
+                </div>
+
+                <h3>To Get Started:</h3>
+                <ul class="streaming-steps">
+                    <li>Open your preferred app on the Smart TV</li>
+                    <li>Log in using your personal account details</li>
+                    <li>Sit back and enjoy your favourite shows and movies</li>
+                </ul>
+
+                <div class="reminder-box">
+                    <strong>⚠️ Before You Check Out:</strong><br>
+                    Please remember to log out of all streaming apps for your privacy and security.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appliance Instructions Section -->
+    <section class="appliance-section" id="section-4">
+        <div class="section-content">
+            <h2>Kitchen Appliances</h2>
+            
+            <div class="appliance-card">
+                <h4><span class="icon">🔥</span> SMEG Induction Cooktop</h4>
+                
+                <h3>Timer Function</h3>
+                <ul class="step-list">
+                    <li>
+                        <span class="step-number">1</span>
+                        <div>Select cooking zone, press timer button. Display shows "00" and LED indicates timer is active.</div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div>Use "+" and "-" buttons to set cooking time (maximum 99 minutes / 1 hour 39 minutes).</div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div>When time elapses, acoustic signal sounds and cooking zone switches off automatically.</div>
+                    </li>
+                    <li>
+                        <span class="step-number">4</span>
+                        <div>To deactivate: hold Timer button for at least 3 seconds.</div>
+                    </li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>⚠️ Residual Heat Indicator:</strong> If display shows "H", the cooking zone is still hot. The zone can be used to keep dishes warm or melt butter. Display goes off when cooled.
+                </div>
+
+                <h3>Special Functions</h3>
+                <p><strong>Simmer Function:</strong> Automatically sets power level for maintaining a low boil. Activate after bringing to boil by pressing zone button, then the simmer button.</p>
+                
+                <p><strong>Fast Boil (Booster):</strong> Press "+" until "P" appears. Uses maximum power for 5 minutes, then automatically returns to level 9.</p>
+
+                <div class="warning-box">
+                    <strong>⚠️ No Pot Warning:</strong> If "no pot" appears, reposition your pot. Hob switches off automatically if no pot detected within 60 seconds.
+                </div>
+            </div>
+
+            <div class="appliance-card">
+                <h4><span class="icon">⚡</span> Eco-Logic Power Management</h4>
+                <p>Set maximum power level to prevent overload. Available levels: 2.5 – 4.0 – 6.0 – 7.2 kW.</p>
+                
+                <h3>To Set Power Level:</h3>
+                <ul class="step-list">
+                    <li>
+                        <span class="step-number">1</span>
+                        <div>Press Power Management button for approximately 3 seconds</div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div>Press Power Management button again to confirm</div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div>Use +/- to set chosen power level amongst available options</div>
+                    </li>
+                    <li>
+                        <span class="step-number">4</span>
+                        <div>Press Power Management button to confirm. Display shows set level, flashes for 2 seconds, then hob emits signal and turns off — ready for use.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Dining Section -->
+    <section class="dining-section" id="section-5">
+        <div class="section-content">
+            <h2>Where to Eat</h2>
+            
+            <div class="restaurant-card">
+                <h4>Hooked on Whangaroa Café & Bistro</h4>
+                <div class="restaurant-meta">
+                    <span class="tag">🍽️ Waterfront Dining</span>
+                    <span class="tag">⏰ Breakfast & Lunch</span>
+                    <span class="tag">📍 Whangaroa Sport Fishing Club</span>
+                </div>
+                <p>Your nearest option! Located at the Whangaroa Sports Fishing Club on the water's edge. Great pub grub with stunning harbour views. No membership required for the café.</p>
+            </div>
+
+            <div class="restaurant-card">
+                <h4>Whangaroa Sport Fishing Club Bar</h4>
+                <div class="restaurant-meta">
+                    <span class="tag">🍻 Bar & Social</span>
+                    <span class="tag">🎣 Local Fishing Culture</span>
+                    <span class="tag">📍 Waterfront</span>
+                </div>
+                <p>Become a temporary member for a modest fee and enjoy the relaxed atmosphere. Swap fishing stories with locals, enjoy a drink, and watch harbour activity. The social heart of Whangaroa's fishing community.</p>
+            </div>
+
+            <div class="restaurant-card">
+                <h4>Mangōnui Fish Shop</h4>
+                <div class="restaurant-meta">
+                    <span class="tag">🐟 World Famous Fish & Chips</span>
+                    <span class="tag">⏰ 40 min drive</span>
+                    <span class="tag">📍 Mangōnui Harbour</span>
+                </div>
+                <p>Known for the 'world famous' Mangōnui Fish and Chip shop. Historic waterfront setting with heritage wooden buildings. Perfect for a relaxed lunch with harbour views.</p>
+            </div>
+
+            <div class="restaurant-card">
+                <h4>Kerikeri Cafés & Restaurants</h4>
+                <div class="restaurant-meta">
+                    <span class="tag">☕ Coffee & Dining</span>
+                    <span class="tag">🎨 Art & Craft Trail</span>
+                    <span class="tag">⏰ 45 min drive</span>
+                </div>
+                <p>The Far North's main hub with award-winning cafés, restaurants, boutique shops, and galleries. Visit the weekend Packhouse Market for fresh local produce and artisan foods.</p>
+            </div>
+
+            <div class="restaurant-card">
+                <h4>Kai'o Kai (Kaeo)</h4>
+                <div class="restaurant-meta">
+                    <span class="tag">⭐ 5.0 Rating</span>
+                    <span class="tag">📍 7km from Whangaroa</span>
+                </div>
+                <p>Highly rated local option in nearby Kaeo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Walking Section -->
+    <section class="activities-section" id="section-6">
+        <div class="section-content">
+            <h2>Explore Whangaroa</h2>
+            
+            <div class="activity-card">
+                <h4>St Paul's Rock Track</h4>
+                <div class="activity-meta">
+                    <span class="difficulty medium">Medium</span>
+                    <span>⏱️ 30 mins return</span>
+                    <span>📍 1.1km</span>
+                    <span>↑ 100m elevation</span>
+                </div>
+                <p>A worthwhile walk climbing through native bush to a volcanic plug with sensational 360° views of Whangaroa Harbour. Chains assist with the final steep climb to the summit. Accessible to most fitness levels — if I can do it, so can you! Great alternative to Duke's Nose for similar views without the long hike.</p>
+                <p><strong>Start:</strong> Car park at end of Hospital Road, Whangaroa township.</p>
+            </div>
+
+            <div class="activity-card">
+                <h4>Duke's Nose (Kaiaraara Rocks)</h4>
+                <div class="activity-meta">
+                    <span class="difficulty hard">Hard</span>
+                    <span>⏱️ 45 mins one way</span>
+                    <span>📍 10.8km return</span>
+                    <span>↑ 518m elevation</span>
+                </div>
+                <p>Spectacular viewpoint overlooking Whangaroa Harbour. Metal wires at the end help you climb the rocks. Perhaps the best views in the entire harbour area. The distinctive rock formation resembles a hawk's nose or duke's profile.</p>
+                <p><strong>Start:</strong> Behind Lane Cove Hut (2-hour walk from Whangaroa) or water taxi available.</p>
+                <p><strong>Tip:</strong> Sunrise hike recommended for incredible light and fewer crowds.</p>
+            </div>
+
+            <div class="activity-card">
+                <h4>Wairakau Stream Track to Lane Cove</h4>
+                <div class="activity-meta">
+                    <span class="difficulty medium">Medium</span>
+                    <span>⏱️ 2 hours one way</span>
+                    <span>📍 End of Campbell Road</span>
+                </div>
+                <p>Beautiful walk through sub-tropical forest with two stream crossings (be prepared to get wet!). Towering native trees, volcanic valley walls, and moss-covered rocks. Ends at Lane Cove Hut (bookable for overnight stays) with ocean views and swimming. Water taxi available back to Whangaroa.</p>
+                <p><strong>Book hut at:</strong> doc.govt.nz (sleeps 16)</p>
+            </div>
+
+            <div class="activity-card">
+                <h4>Matauri Bay</h4>
+                <div class="activity-meta">
+                    <span class="difficulty easy">Easy</span>
+                    <span>⏱️ 20-25 min drive</span>
+                    <span>🏖️ Beach</span>
+                </div>
+                <p>Stunning golden sand beach with views to the Cavalli Islands. Final resting place of the Greenpeace flagship Rainbow Warrior (scuttled here as a dive wreck after the 1985 bombing). Walk up the hill to the Rainbow Warrior memorial. Excellent swimming and snorkeling.</p>
+            </div>
+
+            <div class="activity-card">
+                <h4>Mahinepua Peninsula Track</h4>
+                <div class="activity-meta">
+                    <span class="difficulty medium">Medium</span>
+                    <span>🚶 Coastal Walk</span>
+                    <span>📸 Scenic Views</span>
+                </div>
+                <p>Spectacular coastal views and access to secluded beaches. Perfect for photography and exploring hidden coves.</p>
+            </div>
+
+            <div class="activity-card">
+                <h4>Whangaroa Harbour Cruise</h4>
+                <div class="activity-meta">
+                    <span class="tag">🚤 Water Taxi</span>
+                    <span class="tag">🎣 Fishing Charters</span>
+                    <span class="tag">🏊 Lane Cove Access</span>
+                </div>
+                <p>Explore the dramatic fiord-like landscape by boat. Water taxis depart from Whangaroa Marina to Lane Cove Hut and beautiful bays. World-class game fishing charters available — Whangaroa is known as the "Marlin Capital of New Zealand"!</p>
+                <p><strong>Fishing season:</strong> January through May (peak February-March)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cat Section -->
+    <section class="cat-section" id="section-7">
+        <div class="section-content">
+            <h2>A Little Local Friend</h2>
+            <div class="cat-container">
+                <div class="cat-paw">🐾</div>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--ocean-deep);">
+                    You may notice our friendly cat around the property.
+                </p>
+                
+                <div class="cat-warning">
+                    <strong>🚫 Important — Please Note:</strong><br>
+                    Our cat is <strong>not allowed inside the house</strong>. He damages the furniture when indoors. Please do not let him in, no matter how persuasive he may be! Thank you for helping us keep Te Whare Mā beautiful for all our guests.
+                </div>
+
+                <div class="info-grid" style="margin-top: 2rem;">
+                    <div class="info-card" style="border-left-color: var(--ocean-mid);">
+                        <h3><span class="icon">🥣</span> Feeding</h3>
+                        <p>Feeding is appreciated if you're comfortable. Food and bowl are located in the little shed.</p>
+                    </div>
+                    <div class="info-card" style="border-left-color: var(--ocean-mid);">
+                        <h3><span class="icon">💧</span> Fresh Water</h3>
+                        <p>Fresh water is always helpful and greatly appreciated by our furry friend.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="section-8">
+        <div class="section-content">
+            <h2>Need Assistance?</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
+                We're here to ensure your stay is perfect. Don't hesitate to reach out.
+            </p>
+            
+            <div class="contact-card">
+                <div class="contact-name">Stacey Stewart</div>
+                <div style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 1rem;">Property Manager</div>
+                <a href="tel:+6421283197" class="contact-phone">+64 21 283 197</a>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1rem;">
+                    Available for any questions or concerns during your stay
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="section-9">
+        <div class="section-content">
+            <h2>The Te Whare Mā Experience</h2>
+            <p style="font-size: 1.2rem; color: var(--ocean-mid); margin-bottom: 2rem;">
+                Take a moment to slow down and enjoy the simple luxuries
+            </p>
+            
+            <div class="luxury-grid">
+                <div class="luxury-item">
+                    <span class="luxury-icon">☕</span>
+                    <h4>Morning Coffee</h4>
+                    <p>With harbour views</p>
+                </div>
+                <div class="luxury-item">
+                    <span class="luxury-icon">🌅</span>
+                    <h4>Evening Drinks</h4>
+                    <p>As the sun sets</p>
+                </div>
+                <div class="luxury-item">
+                    <span class="luxury-icon">🌬️</span>
+                    <h4>Fresh Air</h4>
+                    <p>Flowing through open spaces</p>
+                </div>
+                <div class="luxury-item">
+                    <span class="luxury-icon">🌿</span>
+                    <h4>Peace & Privacy</h4>
+                    <p>Nature all around you</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--ocean-deep); font-style: italic;">
+                    "We invite you to disconnect from the busy world and reconnect with what matters most."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist Section -->
+    <section class="checklist" id="section-10">
+        <div class="section-content">
+            <h2>Before You Leave</h2>
+            <p style="text-align: center; color: var(--ocean-mid); margin-bottom: 2rem;">
+                Please help us prepare for our next guests
+            </p>
+            
+            <div class="checklist-grid">
+                <div class="checklist-category">
+                    <h4><span class="icon">🧹</span> Tidying</h4>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Leave home tidy as found</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Wash used dishes</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Strip beds (optional)</span>
+                    </div>
+                </div>
+
+                <div class="checklist-category">
+                    <h4><span class="icon">🗑️</span> Waste</h4>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Dispose of rubbish</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Take recycling to Gamefish Club</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Empty compost if applicable</span>
+                    </div>
+                </div>
+
+                <div class="checklist-category">
+                    <h4><span class="icon">🔒</span> Security</h4>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Close all windows</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Lock all doors</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <div class="checkbox"></div>
+                        <span>Return key to lockbox</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer" id="section-11">
+        <h3>Thank You</h3>
+        <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+            Thank you for choosing Te Whare Mā. We truly hope your stay is relaxing, refreshing, and unforgettable.
+        </p>
+        <div class="maori-text">
+            Ngā mihi nui
+        </div>
+        <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.6;">
+            Te Whare Mā • Whangaroa Harbour, New Zealand
+        </p>
+    </section>
+
+    <!-- Print Section - QR Code (Visible only when printing) -->
+    <div class="print-section" id="printSection">
+        <h2>Digital Guidebook</h2>
+        <p style="color: var(--ocean-mid); margin-bottom: 2rem;">
+            Scan this QR code to access the interactive digital version of this guide on your phone
+        </p>
+        
+        <div class="qr-container">
+            <div id="qrcode"></div>
+            <div class="qr-instructions">
+                <strong>Point your camera here</strong><br>
+                Or visit: <span class="print-url">https://AllinOneNZ.github.io/tewharema-guest-guide/</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem; padding: 2rem; background: var(--sand); border-radius: 8px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--ocean-deep); margin-bottom: 1rem;">Why go digital?</h3>
+            <ul style="text-align: left; color: var(--text-dark); line-height: 2;">
+                <li>Interactive checklists you can tick off</li>
+                <li>Clickable phone numbers for easy calling</li>
+                <li>Always up-to-date information</li>
+                <li>Eco-friendly — no paper waste</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // GitHub Pages URL for QR code
+        const GUIDE_URL = "https://AllinOneNZ.github.io/tewharema-guest-guide/";
+        
+        // Generate QR Code
+        function generateQR() {
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '';
+            
+            new QRCode(qrContainer, {
+                text: GUIDE_URL,
+                width: 200,
+                height: 200,
+                colorDark: '#1a3a3a',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        window.onload = generateQR;
+
+        function printGuide() {
+            const printSection = document.getElementById('printSection');
+            printSection.style.display = 'block';
+            generateQR();
+            
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        function scrollToSection(index) {
+            const section = document.getElementById(`section-${index}`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                updateActiveDot(index);
+            }
+        }
+
+        function updateActiveDot(index) {
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = parseInt(entry.target.id.split('-')[1]);
+                    updateActiveDot(index);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        function toggleCheck(element) {
+            const checkbox = element.querySelector('.checkbox');
+            checkbox.classList.toggle('checked');
+            if (checkbox.classList.contains('checked')) {
+                checkbox.innerHTML = '✓';
+            } else {
+                checkbox.innerHTML = '';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+    </script>
+
+</body>
+</html>
